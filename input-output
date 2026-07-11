@@ -1,0 +1,84 @@
+Yêu cầu
+Viết chương trình quản lý hàng hóa của một cửa hàng bằng file CSV.
+Mỗi mặt hàng gồm các thông tin:
+1.Mã hàng
+2.Tên hàng
+3.Giá
+4.Số lượng
+Dữ liệu được lưu trong file cuahang.csv.
+
+Chương trình có menu:
+===== QUẢN LÝ CỬA HÀNG =====
+1. Thêm mặt hàng
+2. Hiển thị danh sách
+3. Tìm theo mã
+4. Cập nhật số lượng
+5. Xóa mặt hàng
+0. Thoát
+
+Input mẫu
+Chọn: 1
+
+Mã hàng: SP01
+Tên hàng: Bánh
+Giá: 12000
+Số lượng: 15
+
+Đã thêm thành công.
+Chọn: 1
+
+Mã hàng: SP02
+Tên hàng: Sữa
+Giá: 35000
+Số lượng: 8
+
+Đã thêm thành công.
+Chọn: 2
+Output
+Mã      Tên hàng        Giá      Số lượng
+SP01    Bánh            12000    15
+SP02    Sữa             35000    8
+
+Tìm kiếm
+Input
+Chọn: 3
+Nhập mã cần tìm: SP02
+Output
+Mã: SP02
+Tên hàng: Sữa
+Giá: 35000
+Số lượng: 8
+
+Cập nhật số lượng
+Input
+Chọn: 4
+Nhập mã: SP01
+Số lượng mới: 20
+Output
+Cập nhật thành công.
+
+Hiển thị lại
+Input
+Chọn: 2
+Output
+Mã      Tên hàng        Giá      Số lượng
+SP01    Bánh            12000    20
+SP02    Sữa             35000    8
+
+Xóa mặt hàng
+Input
+Chọn: 5
+Nhập mã cần xóa: SP02
+Output
+Đã xóa thành công.
+
+Hiển thị lần cuối
+Input
+Chọn: 2
+Output
+Mã      Tên hàng        Giá      Số lượng
+SP01    Bánh            12000    20
+
+File cuahang.csv sau khi thực hiện
+Mã hàng,Tên hàng,Giá,Số lượng
+SP01,Bánh,12000,20
