@@ -1,0 +1,163 @@
+def them(ten_file):
+    while True:
+        ma=input("Mã: ").strip()
+        if ma=="":
+            print ("Mã không hợp lệ!")
+        else:
+            break    
+    while True:
+        ten_hang=input("Tên hàng: ").strip()
+        if ten_hang=="":
+            print ("Tên không hợp lệ!")
+        else:
+            break
+    while True:
+        try:
+            gia=int(input("Giá: "))
+            if gia<0:
+                raise ValueError("Giá không hợp lệ!")
+            break
+        except ValueError as e:
+            print("Lỗi! ",e)  
+    while True:
+        try:
+            so_luong=int(input("Số lượng: "))
+            if so_luong<0:
+                raise ValueError("Số lượng không hợp lệ!")
+            break
+        except ValueError as e:
+            print("Lỗi! ",e)
+    with open(ten_file,"a",encoding="utf-8") as f:
+        f.write(f"{ma}|{ten_hang}|{gia}|{so_luong}\n")
+    print("Thêm thành công!")
+
+def xem(ten_file):
+    try:
+        with open(ten_file,"r",encoding="utf-8") as f:
+            ds=f.readlines()
+            if not ds:
+                print("Cửa hàng trống!")
+                return 
+            print("---CỬA HÀNG---")
+            print("-"*30)
+            for dong in ds:
+                noi_dung=dong.strip().split("|")
+                print(f"Mã hàng: {noi_dung[0]}")
+                print(f"Tên hàng: {noi_dung[1]}")
+                print(f"Giá: {noi_dung[2]}")
+                print(f"Số lượng: {noi_dung[3]}")
+                print("-"*30)
+    except FileNotFoundError:
+        print("Chưa có cửa hàng")
+
+def tim(ten_file):
+    while True:
+        ma=input("Mã hàng: ").strip().lower()
+        if ma=="":
+            print ("Tên sách không hợp lệ!")
+        else:
+            break
+    try:
+        with open(ten_file,"r",encoding="utf-8")as f:
+            a=0
+            for dong in f:
+                noi_dung=dong.strip().split("|")
+                b=noi_dung[0].lower()
+                if ma==b:
+                    print(f"Mã hàng: {noi_dung[0]}")
+                    print(f"Tên hàng: {noi_dung[1]}")
+                    print(f"Giá: {noi_dung[2]}")
+                    print(f"Số lượng: {noi_dung[3]}\n")
+                    a=1
+            if a==0:
+                print("Không tìm thấy hàng!")
+    except FileNotFoundError:
+        print("Chưa có cửa hàng!")
+def thay(ten_file):
+    while True:
+        ma=input("Mã hàng: ").strip().lower()
+        if ma=="":
+            print ("Mã hàng không hợp lệ!")
+        else:
+            break
+    while True:
+        try:
+            so_luong=int(input("Số lượng: "))
+            if so_luong<0:
+                raise ValueError("Số lượng không hợp lệ!")
+            break
+        except ValueError as e:
+            print("Lỗi! ",e)
+    try:
+        with open(ten_file,"r",encoding="utf-8")as f:
+            ds=f.readlines()
+        a=0
+        with open(ten_file,"w",encoding="utf-8")as f:
+            for dong in ds:
+                noi_dung=dong.strip().split("|")
+                b=noi_dung[0].lower()  
+                if ma !=b:
+                    f.write(f"{noi_dung[0]}|{noi_dung[1]}|{noi_dung [2]}|{noi_dung[3]}\n")
+                else:
+                    f.write(f"{noi_dung[0]}|{noi_dung[1]}|{noi_dung [2]}|{so_luong}\n")
+                    a=1
+            if a==1:
+                print("Xóa thành công!")
+            else:
+                print("Không tìm thấy hàng!")
+    except FileNotFoundError:
+        print("Chưa có cửa hàng!")
+               
+def xoa(ten_file):
+    while True:
+        ma=input("Mã hàng: ").strip().lower()
+        if ma=="":
+            print ("Mã hàng không hợp lệ!")
+        else:
+            break
+    try:
+        with open(ten_file,"r",encoding="utf-8")as f:
+            ds=f.readlines()
+        a=0
+        with open(ten_file,"w",encoding="utf-8")as f:
+            for dong in ds:
+                noi_dung=dong.strip().split("|")
+                b=noi_dung[0].lower()  
+                if ma !=b:
+                    f.write(f"{noi_dung[0]}|{noi_dung[1]}|{noi_dung [2]}|{noi_dung[3]}\n")
+                else:
+                    a=1
+            if a==1:
+                print("Xóa thành công!")
+            else:
+                print("Không tìm thấy hàng!")
+    except FileNotFoundError:
+        print("Chưa có cửa hàng!")
+    
+ten_file=input("Tên file: ")
+while True:
+    print("=====QUẢN LÝ cửa hàng=====")
+    print("1.Thêm mặt hàng.")
+    print("2.Hiển thị danh sách.")
+    print("3.Tìm theo mã.")
+    print("4.Cập nhật số lượng.")
+    print("5.Xóa mặt hàng.")
+    print("6.Thoát.")
+    try:
+        n=int(input("chọn: "))
+        if n==1:
+            them(ten_file)
+        elif n==2:
+            xem(ten_file)
+        elif n==3:
+            tim(ten_file)
+        elif n==4:
+            thay(ten_file)
+        elif n==5:
+            xoa(ten_file)
+        elif n==6:
+            break
+        else:
+           print("Lựa chọn không hợp lệ!")
+    except ValueError as e:
+        print("lỗi!",e)
