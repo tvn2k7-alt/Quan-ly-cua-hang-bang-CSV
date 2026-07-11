@@ -1,1 +1,1 @@
-# -Qu-n-l-c-a-h-ng-b-ng-CSV.
+# Quản lý cửa hàng bằng CSV
