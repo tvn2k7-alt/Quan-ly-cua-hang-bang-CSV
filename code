@@ -40,13 +40,11 @@ def xem(ten_file):
                 return 
             print("---CỬA HÀNG---")
             print("-"*30)
+            print("{:<10}{:<10}{:<10}{:<10}".format("Mã hàng","Tên hàng","Giá","Số lượng"))
             for dong in ds:
                 noi_dung=dong.strip().split("|")
-                print(f"Mã hàng: {noi_dung[0]}")
-                print(f"Tên hàng: {noi_dung[1]}")
-                print(f"Giá: {noi_dung[2]}")
-                print(f"Số lượng: {noi_dung[3]}")
-                print("-"*30)
+                print(f"{noi_dung[0]:10}{noi_dung[1]:10}{noi_dung[2]:10}{noi_dung[3]}")
+            print("-"*30)
     except FileNotFoundError:
         print("Chưa có cửa hàng")
 
